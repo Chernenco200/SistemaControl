@@ -1,0 +1,5 @@
+venv
+__pycache__
+db.sqlite3
+comandos.txt
+settings2.py
