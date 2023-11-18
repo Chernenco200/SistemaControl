@@ -107,3 +107,7 @@ def delete_task(request, task_id):
     if request.method == 'POST':
         task.delete()
         return redirect('tasks')
+
+
+def ventas_view(request):
+    return render(request, 'ventas.html')
