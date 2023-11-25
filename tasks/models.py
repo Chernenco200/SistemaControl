@@ -18,28 +18,31 @@ class Task(models.Model):
 class Cliente(models.Model):    
   codigo = models.CharField(max_length=200)
   nombre = models.CharField(max_length=200)
-  create = models.DateTimeField(auto_now_add=True)
-  update = models.DateTimeField(auto_now_add=True)
+  telefono = models.CharField(max_length=200)
+  created = models.DateTimeField(auto_now_add=True)
+  updated = models.DateTimeField(auto_now_add=True)
 
   class Meta:
-    verbose_name = 'cliente'
+    verbose_name = 'clientes'
     verbose_name_plural = 'clientes'
 
   def __str__(self):
     return self.nombre
 
 
-class Produco(models.Model):    
+class Producto(models.Model):    
   codigo = models.CharField(max_length=200)
   descripcion = models.CharField(max_length=200)
+  imagen = models.ImageField(upload_to='productos',null=True,blank=True)
   costo = models.DecimalField(max_digits=15, decimal_places=2)
   cantidad = models.DecimalField(max_digits=15, decimal_places=2)
-  create = models.DateTimeField(auto_now_add=True)
-  update = models.DateTimeField(auto_now_add=True)
+  created = models.DateTimeField(auto_now_add=True)
+  updated = models.DateTimeField(auto_now_add=True)
 
   class Meta:
-    verbose_name = 'cliente'
-    verbose_name_plural = 'clientes'
+    verbose_name = 'producto'
+    verbose_name_plural = 'productos'
+    order_with_respect_to = 'descripcion'
 
   def __str__(self):
-    return self.nombre
+    return self.descripcion
