@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.forms import model_to_dict
+
 # Create your models here.
 
 class Task(models.Model):
@@ -19,6 +21,7 @@ class Cliente(models.Model):
   codigo = models.CharField(max_length=200)
   nombre = models.CharField(max_length=200)
   telefono = models.CharField(max_length=200)
+  #imagen = models.ImageField(upload_to='cliente', null=True, blank=True)
   created = models.DateTimeField(auto_now_add=True)
   updated = models.DateTimeField(auto_now_add=True)
 
@@ -46,3 +49,7 @@ class Producto(models.Model):
 
   def __str__(self):
     return self.descripcion
+
+
+
+

@@ -5,9 +5,14 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .models import Task
+from .models import Task, Cliente, Producto
 
-from .forms import TaskForm
+from .forms import TaskForm, ClienteForm , EditarClienteForm
+from django.contrib import messages
+
+
+
+
 
 # Create your views here.
 
@@ -109,5 +114,58 @@ def delete_task(request, task_id):
         return redirect('tasks')
 
 
+
+
+
 def ventas_view(request):
     return render(request, 'ventas.html')
+
+
+def cliente_view(request):
+
+    form_personal = ClienteForm()
+    form_editar_personal = EditarClienteForm()
+    personal = Cliente.objects.all()
+    num_personal = len(personal)
+
+    context = {
+        'form_personal': form_personal,
+        'form_editar_personal': form_editar_personal,
+        'personal': personal,
+        'num_personal': num_personal
+    }
+    return render(request, 'clientes.html', context)
+
+def add_cliente_view(request):
+    if request.POST:
+        #print(request.POST)
+        form = ClienteForm(request.POST, request.FILES)
+        if form.is_valid:
+            try:
+                form.save()
+            except:
+                messages.warning(request,"Cliente ya agregado o datos incorrectos")
+                return redirect('Cliente')
+
+
+    return redirect('Cliente')
+
+def delete_cliente_view(request):
+    if request.POST:
+        if int(request.POST.get('id_personal_eliminar')) == 1:
+            messages.warning(request, "No es posible eliminar este cliente")
+            return redirect('Cliente')
+        personal = Cliente.objects.get(pk=request.POST.get('id_personal_eliminar'))
+        personal.delete()
+        
+    return redirect('Cliente')
+
+def edit_cliente_view(request):
+    if request.POST:
+        producto = Cliente.objects.get(pk=request.POST.get('id_personal_editar'))
+        form = EditarClienteForm(
+            request.POST, request.FILES, instance=producto)
+        if form.is_valid:
+            form.save()
+
+    return redirect('Cliente')   

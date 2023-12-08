@@ -34,6 +34,11 @@ urlpatterns = [
     path('tasks/<int:task_id>/delete', views.delete_task, name='delete_task'),
     
     path('ventas/', views.ventas_view, name='ventas'),
+    
+    path('cliente/', views.cliente_view, name='Cliente'),
+    path('add_cliente/', views.add_cliente_view, name='AddCliente'),
+    path('edit_cliente/', views.edit_cliente_view, name='EditCliente'),
+    path('delete_cliente/', views.delete_cliente_view, name='DeleteCliente'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
