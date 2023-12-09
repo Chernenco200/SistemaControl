@@ -12,25 +12,29 @@ class TaskForm(ModelForm):
 
 class ClienteForm(forms.ModelForm):
     class Meta:
-        #imagen = forms.ImageField()
+        imagen = forms.ImageField()
         model = Cliente
-        fields = ('codigo','nombre', 'telefono')
+        fields = ('codigo','nombre', 'telefono','imagen')
         labels = {
             'codigo': 'Código: ',
             'telefono': 'Telefono: ',
-            'nombre': 'Descripcion: '
+            'nombre': 'Descripcion: ',
+            'imagen': 'Imagen: '
         }
 
 class EditarClienteForm(forms.ModelForm):
 
     class Meta:
         #imagen = forms.ImageField()
+        imagen = forms.ImageField()
         model = Cliente
-        fields = ('codigo','nombre', 'telefono')
+        fields = ('codigo','nombre', 'telefono','imagen')
         labels = {
             'codigo': 'Código: ',
             'telefono': 'Telefono: ',
-            'nombre': 'Descripcion: '
+            'nombre': 'Descripcion: ',
+            'imagen': 'Imagen: '
+
         }
 
         widgets = {
