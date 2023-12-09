@@ -23,16 +23,36 @@ function editarEquipo(id, area, codigo, descripcion) {
   document.getElementById("descripcion_editar").value = descripcion;
 }
 
-function editarProduct(id, precio, descripcion, costo, cantidad, categoria, servicio) {
+function editarProduct(id, codigo, descripcion, costo, iva, precio, zona) {
   document.getElementById("id_producto_editar").value = id;
   document.getElementById("precio_editar").value = precio;
   document.getElementById("descripcion_editar").value = descripcion;
   document.getElementById("costo_editar").value = costo;
-  document.getElementById("cantidad_editar").value = cantidad;
-  document.getElementById("categoria_editar").value = categoria;
+  document.getElementById("iva_editar").value = iva;
+  document.getElementById("codigo_editar").value = codigo;
+  document.getElementById("zona_editar").value = zona;
+}
+function editarProductAlmacen(id, codigo, descripcion, costo, iva, precio, porcion, unidad,servicio, barcode, unidadventa) {
+  document.getElementById("id_producto_editar").value = id;
+  document.getElementById("precio_editar").value = precio;
+  document.getElementById("descripcion_editar").value = descripcion;
+  document.getElementById("costo_editar").value = costo;
+  document.getElementById("iva_editar").value = iva;
+  document.getElementById("codigo_editar").value = codigo;
+  document.getElementById("unidad_editar").value = unidad;
+  document.getElementById("porcion_editar").value = porcion;
+  document.getElementById("barcode_editar").value = barcode;
+  document.getElementById("unidad_venta_editar").value = unidadventa;
+
   if (servicio=='True'){
     document.getElementById('servicio_editar').checked=true;
   }
+}
+
+function ajusteProduct(id,cantidadanterior) {
+  document.getElementById("id_producto_ajustar").value = id;
+  document.getElementById("cantidadanterior").value = cantidadanterior;
+  
 }
 
 function historialPreventivo(id,solicitadoh,supervisado,responsable, subtotalpiezas, subtotalmo, fecha) {
@@ -57,18 +77,12 @@ function editarPreventivo(id, fecha, contacto, piezas, actividades, comentarios,
   document.getElementById("total_editar").value = total;
 }
 
-function editarCorrectivo(id, equipo, fecha, solicitado, estado, responsable, actividades, subtotalmo, supervisado, falla) {
+function editarCorrectivo(id, estado, codigo, fecha) {
   
   document.getElementById("id_correctivo_editar").value = id;
-  document.getElementById("equipo_editar").value = equipo;
-  document.getElementById("fecha_editar").value = fecha;
-  document.getElementById("actividades_editar").value = actividades;
-  document.getElementById("solicitadoc_editar").value = solicitado;
   document.getElementById("estado_editar").value = estado;
-  document.getElementById("responsablec_editar").value = responsable;
-  document.getElementById("subtotalmo_editar").value = subtotalmo;
-  document.getElementById("supervisadoc_editar").value = supervisado;
-  document.getElementById("falla_editar").value = falla;
+  document.getElementById("codigo_editar").value = codigo;
+  document.getElementById("fecha_editar").value = fecha;
 }
 
 function eliminarCorrectivo(id) {
@@ -94,11 +108,14 @@ function eliminarProducto(id) {
   document.getElementById("id_producto_eliminar").value = id;
 }
 
-function editarPersonal(id, nombre, telefono, cargo) {
+function editarPersonal(id, nombre, telefono, cargo, codigo, zona) {
+  
   document.getElementById("id_personal_editar").value = id;
   document.getElementById("nombre_editar").value = nombre;
   document.getElementById("telefono_editar").value = telefono;
+  document.getElementById("codigo_editar").value = codigo;
   document.getElementById("cargo_editar").value = cargo;
+  document.getElementById("zona_editar").value = zona;
 }
 
 function eliminarPersonal(id) {
