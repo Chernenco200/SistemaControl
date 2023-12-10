@@ -39,6 +39,15 @@ urlpatterns = [
     path('add_cliente/', views.add_cliente_view, name='AddCliente'),
     path('edit_cliente/', views.edit_cliente_view, name='EditCliente'),
     path('delete_cliente/', views.delete_cliente_view, name='DeleteCliente'),
+
+    #path('productos/', views.inventario_view, name='Product'),
+    #path('delete_producto/', views.delete_producto_view, name='DeleteProduct'),
+    #path('add_producto/', views.add_product_view, name='AddProduct'),
+    #path('edit_producto/', views.edit_product_view, name='EditProduct'),
+    #path('ajuste_producto/', views.ajuste_product_view, name='AjusteProduct'),
+   
+    #path('empresa/', views.empresa_view, name='Empresa'),
+ 
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

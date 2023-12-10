@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Curso Punto de Venta</title>
+  <title>Lecogram Ventas</title>
 
   <link rel="icon" type="image/x-icon" href="{% static 'index/img/logo.png' %}">
   <!-- Font Awesome -->
@@ -67,7 +67,7 @@
       <a href="" class="brand-link">
         <img src="{% static 'index/img/logo.png' %}" alt="Logo" class="brand-image img-circle elevation-3"
           style="opacity: .8">
-        <span class="brand-text font-weight-light">Punto Venta</span>
+        <span class="brand-text font-weight-light">Lecogram Ventas</span>
       </a>
 
       <!-- Sidebar -->
@@ -81,75 +81,75 @@
 
             <li class="nav-header">OPCIONES</li>
             <li class="nav-item">
-              <a href="{% url 'ventas' %}" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
+              <a href="" class="nav-link">
+                <i class="fas fa-money-bill"></i>
                 <p>
                   Ventas
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'signin' %}" class="nav-link">
-                <i class="nav-icon fas fa-boxes"></i>
-                <p>
-                  Inventario
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="" class="nav-link">
-                <i class="nav-icon fas fa-industry"></i>
+                <i class="fas fa-arrow-circle-left"></i>
                 <p>
                   Compras
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+              <a href="" class="nav-link">
+                <i class="fas fa-money-check-alt"></i>
                 <p>
-                  Pedidos
-                  <i class="fas fa-angle-left right"></i>
+                  Créditos
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <i class="nav-icon far fa-circle text-info"></i>
-                    <p>Todos</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <i class="nav-icon far fa-circle text-warning"></i>
-                    <p>Para hoy</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <i class="nav-icon far fa-circle text-danger"></i>
-                    <p>Atrasados</p>
-                  </a>
-                </li>
-              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>
+                  Devoluciones
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="fas fa-box"></i>
+                <p>
+                  Inventario
+                </p>
+              </a>
             </li>
             <li class="nav-header">EMPRESA</li>
             <li class="nav-item">
               <a href="" class="nav-link">
-                <i class=" nav-icon fas fa-globe"></i>
+                <i class="fas fa-industry"></i>
                 <p>Información</p>
               </a>
             </li>
             <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="fas fa-truck"></i>
+                <p>Proveedores</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{% url 'Cliente' %}" class="nav-link">
-                <i class="nav-icon fas fa-users-cog"></i>
+                <i class="fas fa-user-friends"></i>
                 <p>Clientes</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="" class="nav-link">
-                <i class="nav-icon fas fa-chart-line"></i>
+                <i class="fas fa-chart-bar"></i>
                 <p>Dashboard</p>
+              </a>
+            </li>
+            <li class="nav-header">SALIR</li>
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="nav-icon fas fa-sign-out-alt bg-danger"></i>
+                <p>Salir</p>
               </a>
             </li>
           </ul>
