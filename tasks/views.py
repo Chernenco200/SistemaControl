@@ -7,7 +7,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task, Cliente, Producto, Empresa
 
-from .forms import TaskForm, ClienteForm , EditarClienteForm, InventarioForm , ProductoForm, EditarProductoForm, EmpresaForm
+from .forms import TaskForm, ClienteForm , EditarClienteForm, InventarioForm , ProductoForm, EditarProductoForm, EmpresaForm, AddProductoForm
 from django.contrib import messages
 
 
@@ -266,3 +266,35 @@ def empresa_view(request):
 
     return render(request, 'empresa.html', context)
 
+
+
+
+def producto_view(request):
+
+    """form_personal = ClienteForm()
+    form_editar_personal = EditarClienteForm()
+    personal = Cliente.objects.all()
+    num_personal = len(personal)"""
+
+    productos = Producto.objects.all()
+    form_add = AddProductoForm()
+    context = {
+        'productos':productos,
+        'form_add' :form_add 
+
+    }
+    return render(request, 'productos.html', context)
+
+def add_producto_view(request):
+    if request.POST:
+        #print(request.POST)
+        form = AddProductoForm(request.POST, request.FILES)
+        if form.is_valid:
+            try:
+                form.save()
+            except:
+                messages.warning(request,"Producto ya agregado o datos incorrectos")
+                return redirect('Productos')
+
+
+    return redirect('Productos')

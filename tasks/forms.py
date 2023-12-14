@@ -118,3 +118,22 @@ class EmpresaForm(forms.ModelForm):
             'imagen': 'Imagen: ',
             'moneda': 'Moneda: '
         }
+
+class AddProductoForm(forms.ModelForm):
+    class Meta:
+        imagen = forms.ImageField()
+        model = Producto
+        fields = ('codigo','descripcion', 'imagen', 'costo','iva', 'precio', 'cantidad',  'unidad', 'porcion', 'unidad_venta' ,'servicio', 'barcode')
+        labels = {
+            'codigo': 'Código interno:',
+            'descripcion': 'Descripción: ',
+            'imagen': 'Imagen: ',
+            'costo': 'Costo: ',
+            'iva': 'IVA %: ',
+            'precio': 'Precio unit. : ',
+            'cantidad': 'Cantidad: ',
+            'barcode': 'Código de barras: ',
+            'servicio': ' ¿Es servicio?: ', 
+            'porcion': 'Relación unidad venta por unidad de compra: (Ejemp. 24 x 1, 1 x 1) ',
+            'unidad_venta': 'Unidad venta: '
+        }
