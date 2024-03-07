@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .models import Task, Cliente, Producto, Empresa
+from .models import Task, Cliente, Producto, Egreso,ProductosEgreso, Empresa
 
 from .forms import TaskForm, ClienteForm , EditarClienteForm, InventarioForm , ProductoForm, EditarProductoForm, EmpresaForm, AddProductoForm
 from django.contrib import messages
@@ -173,103 +173,7 @@ def edit_cliente_view(request):
 
 
 
-#@login_required(login_url='Login')
-def inventario_view(request):
-    
-    form_producto = ProductoForm()
-    form_editar_producto = EditarProductoForm()
-    form_ajustar = InventarioForm()
-    productos = Producto.objects.all()
-    num_productos = len(productos)
-    empresa = Empresa.objects.get(pk=1)
-    moneda = empresa.moneda
-
-    context = {
-        'form_producto': form_producto,
-        'form_editar_producto': form_editar_producto,
-        'productos': productos,
-        'num_productos': num_productos, 
-        'form_ajustar_producto': form_ajustar,
-        'moneda': moneda
-    }
-    return render(request, 'inventario.html', context)
-
-
-#@login_required(login_url='Login')
-def delete_producto_view(request):
-    if request.POST:
-        producto = Producto.objects.get(pk=request.POST.get('id_producto_eliminar'))
-        if producto.imagen:
-            os.remove(producto.imagen.path)
-        producto.delete()
-        
-    return redirect('Product')
-
-
-#@login_required(login_url='Login')
-def add_product_view(request):
-    if request.POST:
-        #print(request.POST)
-        form = ProductoForm(request.POST, request.FILES)
-        if form.is_valid:
-            try:
-                form.save()
-            except:
-                messages.warning(request,"Producto ya agregado o datos incorrectos")
-                return redirect('Product')
-
-
-    return redirect('Product')
-
-
-#@login_required(login_url='Login')
-def edit_product_view(request):
-    if request.POST:
-        producto = Producto.objects.get(pk=request.POST.get('id_producto_editar'))
-        form = EditarProductoForm(
-            request.POST, request.FILES, instance=producto)
-        if form.is_valid():
-            form.save()
-
-    return redirect('Product')
-
-#@login_required(login_url='Login')
-def ajuste_product_view(request):
-    if request.POST:
-        producto = Producto.objects.get(pk=request.POST.get('id_producto_ajustar'))
-        form = InventarioForm(
-            request.POST, request.FILES, instance=producto)
-        if form.is_valid():
-            ajuste = Ajuste(producto=producto, cantidad_registrada=float(request.POST["cantidadanterior"]),cantidad_real=float(request.POST["cantidad"]), fecha=HOY,responsable=request.user)
-            form.save()
-            ajuste.save()
-
-    return redirect('Product')
-
-def empresa_view(request):
-    
-    empresa = Empresa.objects.get(pk=1)
-    form_empresa = EmpresaForm(instance=empresa)
-
-    if request.POST:
-        empresa = Empresa.objects.get(pk=1)
-        form_empresa = EmpresaForm(
-            request.POST, request.FILES, instance=empresa)
-        if form_empresa.is_valid():
-            form_empresa.save()
-            form_empresa = EmpresaForm(instance=empresa)
-            messages.info(request,"Cambios efectuados con éxito")
-    context = {
-        'form_empresa': form_empresa,
-        'empresa': empresa
-    }
-
-    return render(request, 'empresa.html', context)
-
-
-
-
-def producto_view(request):
+def productos_view(request):
 
     """form_personal = ClienteForm()
     form_editar_personal = EditarClienteForm()

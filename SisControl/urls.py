@@ -40,16 +40,17 @@ urlpatterns = [
     path('edit_cliente/', views.edit_cliente_view, name='EditCliente'),
     path('delete_cliente/', views.delete_cliente_view, name='DeleteCliente'),
 
-    path('producto/', views.producto_view, name='Productos'),
+    path('productos/', views.productos_view, name='Productos'),
     #path('delete_producto/', views.delete_producto_view, name='DeleteProduct'),
     path('add_producto/', views.add_producto_view, name='AddProducto'),
     #path('edit_producto/', views.edit_product_view, name='EditProduct'),
     #path('ajuste_producto/', views.ajuste_product_view, name='AjusteProduct'),
    
-    #path('empresa/', views.empresa_view, name='Empresa'),
-    #path('add_venta/',views.add_ventas.as_view(), name='AddVenta'),
+    #path('ventas/',views.ventas.as_view(), name='Venta'),
+    #path('add_venta/', views.save_venta_view, name='AddVenta'),
     #path('export/', views.export_pdf_view, name="ExportPDF" ),
     #path('export/<id>/<iva>', views.export_pdf_view, name="ExportPDF" ),
+
  
 ]
 
