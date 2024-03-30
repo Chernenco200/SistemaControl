@@ -80,32 +80,38 @@ class EditarProductoForm(forms.ModelForm):
     class Meta:
         imagen = forms.ImageField()
         model = Producto
-        fields = ('codigo', 'descripcion', 'imagen','costo','iva', 'unidad', 'precio', 'porcion', 'unidad_venta' ,'servicio','barcode')
+        fields = ('codigo', 'descripcion', 'imagen','costo','precio','iva','cantidad', 'porcion', 'unidad','unidad_venta','servicio', 'barcode')
         labels = {
             'codigo': 'Código:',
             'descripcion': 'Descripción: ',
             'imagen': 'Imagen: ',
             'costo': 'Costo: ',
-            'iva': 'IVA %: ',
             'precio': 'Precio unit. : ',
-            'barcode': 'Código de barras: ',
-            'servicio': ' ¿Es servicio?: ', 
+            'iva': 'IVA %: ',
+            'cantidad': 'cantidad : ',
             'porcion': 'Relación unidad venta por unidad de compra: (Ejemp. 24 x 1, 1 x 1) ',
-            'unidad_venta': 'Unidad venta: '
+            'unidad': 'unidad: ',
+            'unidad_venta': 'Unidad venta: ',
+            'servicio': ' ¿Es servicio?: ', 
+            'barcode': 'Código de barras: ',
+
+                        
         }
 
         widgets = {
-            'codigo': forms.TextInput(attrs={'id': 'codigo_editar'}),
+            'codigo': forms.TextInput(attrs={'type': 'text', 'id': 'codigo_editar'}),
             'descripcion': forms.TextInput(attrs={'id': 'descripcion_editar'}),
             'costo': forms.NumberInput(attrs={'id': 'costo_editar'}),
-            'iva': forms.NumberInput(attrs={'id': 'iva_editar'}),
             'precio': forms.NumberInput(attrs={'id': 'precio_editar'}),
-            'unidad': forms.Select(attrs={'id': 'unidad_editar'}),
+            'iva': forms.NumberInput(attrs={'id': 'iva_editar'}),
+            'cantidad': forms.NumberInput(attrs={'id': 'cantidad_editar'}),
             'porcion': forms.NumberInput(attrs={'id': 'porcion_editar'}),
-            'barcode': forms.TextInput(attrs={'id': 'barcode_editar'}),
-            'servicio': forms.CheckboxInput(attrs={'id': 'servicio_editar'}),
+            'unidad': forms.Select(attrs={'id': 'unidad_editar'}),
             'unidad_venta': forms.Select(attrs={'id': 'unidad_venta_editar'}),
+            'servicio': forms.CheckboxInput(attrs={'id': 'servicio_editar'}),
+            'barcode': forms.TextInput(attrs={'id': 'barcode_editar'}),
         }
+
 
 class EmpresaForm(forms.ModelForm):
     class Meta:
@@ -137,3 +143,9 @@ class AddProductoForm(forms.ModelForm):
             'porcion': 'Relación unidad venta por unidad de compra: (Ejemp. 24 x 1, 1 x 1) ',
             'unidad_venta': 'Unidad venta: '
         }
+
+
+
+class VentaForm(forms.Form):
+    nombre_cliente = forms.CharField(max_length=100)
+    total_venta = forms.DecimalField(max_digits=10, decimal_places=2)

@@ -190,3 +190,16 @@ class ProductosEgreso(models.Model):
     def toJSON(self):
         item = model_to_dict(self, exclude=['created'])
         return item
+
+
+
+
+
+class Venta(models.Model):
+    nombre_cliente = models.CharField(max_length=100)
+    total_venta = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha_venta = models.DateTimeField(auto_now_add=True)
+    # Otros campos necesarios para la venta
+
+    def __str__(self):
+        return f"Venta de {self.nombre_cliente} - {self.fecha_venta}"

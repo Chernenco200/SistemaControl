@@ -23,15 +23,7 @@ function editarEquipo(id, area, codigo, descripcion) {
   document.getElementById("descripcion_editar").value = descripcion;
 }
 
-function editarProduct(id, codigo, descripcion, costo, iva, precio, zona) {
-  document.getElementById("id_producto_editar").value = id;
-  document.getElementById("precio_editar").value = precio;
-  document.getElementById("descripcion_editar").value = descripcion;
-  document.getElementById("costo_editar").value = costo;
-  document.getElementById("iva_editar").value = iva;
-  document.getElementById("codigo_editar").value = codigo;
-  document.getElementById("zona_editar").value = zona;
-}
+
 function editarProductAlmacen(id, codigo, descripcion, costo, iva, precio, porcion, unidad,servicio, barcode, unidadventa) {
   document.getElementById("id_producto_editar").value = id;
   document.getElementById("precio_editar").value = precio;
@@ -104,9 +96,7 @@ function eliminarPreventivo(id) {
   document.getElementById("id_preventivo_eliminar").value = id;
 }
 
-function eliminarProducto(id) {
-  document.getElementById("id_producto_eliminar").value = id;
-}
+
 
 function editarPersonal(id, nombre, telefono, cargo, codigo, zona) {
   
@@ -121,6 +111,25 @@ function editarPersonal(id, nombre, telefono, cargo, codigo, zona) {
 function eliminarPersonal(id) {
   document.getElementById("id_personal_eliminar").value = id;
 }
+function editarProducto(id,codigo,descripcion, imagen,costo,precio,iva,cantidad, porcion, unidad,unidad_venta,servicio, barcode) {
+  document.getElementById("id_producto_editar").value = id;
+  document.getElementById("codigo_editar").value = codigo;
+  document.getElementById("descripcion_editar").value = descripcion;
+  document.getElementById("costo_editar").value = costo;
+  document.getElementById("precio_editar").value = precio;
+  document.getElementById("iva_editar").value = iva;
+  document.getElementById("cantidad_editar").value = cantidad;
+  document.getElementById("porcion_editar").value = porcion;
+  document.getElementById("unidad_editar").value = unidad;
+  document.getElementById("unidad_venta_editar").value = unidad_venta;
+  document.getElementById("servicio_editar").value = servicio;
+  document.getElementById("barcode_editar").value = barcode;
+}
+
+function eliminarProducto(id) {
+  document.getElementById("id_producto_eliminar").value = id;
+}
+
 
 function borrarContent(){
   document.getElementById("search").value = "";
